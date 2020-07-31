@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "transforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "host": { "type": "string", "default": "%(principalHost)s" },
+          "remote": { "type": "string" },
+          "local": { "type": "string" },
+          "paths": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          },
+          "use": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": ["remote", "local"]
+      },
+      "default": []
+    },
+    "manifestVersion": { "type": "integer", "const": 1 }
+  },
+  "required": ["manifestVersion"]
+}
