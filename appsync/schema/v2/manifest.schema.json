@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "properties": {
+    "transforms": {
+      "description": "List of mapping between remote/local directory layouts",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "description": "Host name or address of the remote machine",
+            "type": "string",
+            "default": "%(principalHost)s"
+          },
+          "remote": {
+            "description": "Absolute path on the remote machine to be synced",
+            "type": "string"
+          },
+          "local": {
+            "description": "Absolute path on the local machine to be synced",
+            "type": "string"
+          },
+          "paths": {
+            "anyOf": [
+              {
+                "description": "All files will be synced",
+                "type": "null"
+              },
+              {
+                "description": "Only selected sub-paths will be synced",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "default": null
+          },
+          "use": {
+            "description": "Activate the current mapping",
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "remote",
+          "local"
+        ]
+      },
+      "default": []
+    },
+    "manifestVersion": {
+      "type": "integer",
+      "const": 2
+    }
+  },
+  "required": [
+    "manifestVersion"
+  ]
+}
